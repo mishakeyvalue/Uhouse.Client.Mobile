@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, View, TextInput, Text, AsyncStorage  } from 'react-native';
+import { Button, StyleSheet, View, TextInput, Text  } from 'react-native';
 
-import { UriStorageKey } from './UriSettings'; 
+import { getUri } from './infrastructure/uri-settings'
 
 export default class PinSwitcher extends Component {
 
@@ -18,11 +18,11 @@ export default class PinSwitcher extends Component {
         method: 'POST'
         })
         }
-  state = {baseUri:'http://192.168.0.103:8090'}
+  state = {baseUri:'http://192.168.0.103:8090'} // the default one
 
   constructor(props) {
       super(props);
-      AsyncStorage.getItem(UriStorageKey)
+      getUri()
       .then(uri => {
          this.state.baseUri = uri;
 

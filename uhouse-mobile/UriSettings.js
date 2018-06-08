@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import { Alert, AppRegistry, Button, StyleSheet, View, TextInput, Text, AsyncStorage } from 'react-native';
+import { Alert, AppRegistry, Button, StyleSheet, View, TextInput, Text } from 'react-native';
 
-export const UriStorageKey = "_station-uri-key";
+import { getUri, setUri } from './infrastructure/uri-settings'
+
 export default class UriSettings extends Component {
 
   _onPressButton = () => {
     let uri = this.state.text;
-    AsyncStorage.setItem(UriStorageKey, uri);
+    setUri(uri);
   }
 
   constructor(props) {
       super(props);
       this.state = {};      
-      AsyncStorage.getItem(UriStorageKey)
+      getUri()
       .then(v => {
         this.setState({text:v})
       })
