@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Alert, AppRegistry, Button, StyleSheet, View, TextInput, Text } from 'react-native';
 
-import { getUri, setUri } from './infrastructure/uri-settings'
+import { getUri, setUri } from '../infrastructure/uri-settings'
 
 export default class UriSettings extends Component {
 
@@ -22,7 +22,6 @@ export default class UriSettings extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
         <View style={styles.buttonContainer}>
           <Text style={{padding: 10, fontSize: 21}}>
             Station's URI settings 
@@ -37,7 +36,6 @@ export default class UriSettings extends Component {
             title="Save"
           />
         </View>        
-      </View>
     );
   }
 }

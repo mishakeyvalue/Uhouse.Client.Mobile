@@ -1,26 +1,25 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+import { StyleSheet } from 'react-native';
 
-import UriSettings from './UriSettings';
-import PinSwitcher from './PinSwitcher';
+import AppNavigator from './Routes';
+
+import store from './store';
 
 export default class App extends React.Component {
-  render() {
-    return (
-    <View style={{flex: 1, backgroundColor: 'powderblue'}}>
-      <PinSwitcher />
-      <UriSettings />
-      {/* <View style={{flex: 2, backgroundColor: 'skyblue'}} />
-      <View style={{flex: 3, backgroundColor: 'steelblue'}} /> */}
-    </View>
-    );    
-  }
+    render() {
+        return (
+            <Provider store={store}>
+                <AppNavigator style={styles.container} />
+            </Provider>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'powderblue',
     alignItems: 'center',
     justifyContent: 'center',
   },
